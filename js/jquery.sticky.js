@@ -226,43 +226,54 @@ $(document).ready(function(){
   
   document.querySelectorAll('.carousel-item.second-carousel').forEach(item => {
       item.addEventListener('click', () => {
-          window.location.href = 'services.html';
+          window.location.href = 'meble.html';
       });
   });
   
 
-  document.querySelectorAll('.carousel-item').forEach(item => {
-    const caption = document.createElement('div');
-    caption.innerHTML = "En voir plus"; // Tekst, który ma się pojawić
-    caption.classList.add("custom-caption"); // Dodaj tę klasę do swojego CSS
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.carousel-item').forEach(item => {
+      const caption = document.createElement('div');
+      caption.classList.add("custom-caption"); // Zastosuj tę samą klasę dla wszystkich wersji językowych
   
-    // Ustawienie stylów dla tekstowego napisu
-    caption.style.position = "absolute";
-    caption.style.top = "50%";
-    caption.style.left = "50%";
-    caption.style.transform = "translate(-50%, -50%)";
-    caption.style.color = "white"; // Kolor tekstu
-    caption.style.fontSize = "40px"; // Rozmiar czcionki
-    caption.style.fontWeight = "bold"; // Grubość czcionki
-    caption.style.textAlign = "center"; // Wyrównanie tekstu do środka
-    caption.style.pointerEvents = "none"; // Zapobiega interakcji z napisem (kliknięcie przeniesie przez link)
+      // Ustawienie stylów dla tekstowego napisu (przykładowe, dostosuj według potrzeb)
+      caption.style.position = "absolute";
+      caption.style.top = "50%";
+      caption.style.left = "50%";
+      caption.style.transform = "translate(-50%, -50%)";
+      caption.style.color = "white";
+      caption.style.fontSize = "40px";
+      caption.style.fontWeight = "bold";
+      caption.style.textAlign = "center";
+      caption.style.pointerEvents = "none";
+      
+      // Sprawdzenie ścieżki URL, aby ustawić odpowiedni tekst
+      if(window.location.pathname.endsWith('indexpl.html') || window.location.pathname.endsWith('projectpl.html')) {
+        caption.innerHTML = "Zobacz więcej"; // Tekst po polsku
+      } else if(window.location.pathname.endsWith('indexen.html')) {
+        caption.innerHTML = "See more"; // Tekst po angielsku
+      } else {
+        caption.innerHTML = "Voir plus"; // Domyślny tekst po francusku
+      }
   
-    // Dodaj napis do każdego elementu .carousel-item
-    item.appendChild(caption);
+      // Dodaj napis do każdego elementu .carousel-item
+      item.appendChild(caption);
   
-    // Pokaż tekst tylko po najechaniu kursorem
-    item.addEventListener('mouseenter', () => {
-      caption.style.display = "block";
-    });
-  
-    item.addEventListener('mouseleave', () => {
-      caption.style.display = "none";
+      // Pokaż i ukryj tekst na zdarzenia myszy
+      item.addEventListener('mouseenter', () => {
+        caption.style.display = "block";
+      });
+      item.addEventListener('mouseleave', () => {
+        caption.style.display = "none";
+      });
     });
   });
 
   document.addEventListener("DOMContentLoaded", function() {
     const projectItems = document.querySelectorAll('.my-projects .project-item');
     const captions = ["CUISINE", "SALLE DE BAIN", "BIBLIOTHEQUE", "AUTRES"];
+
+    
 
     projectItems.forEach((item, index) => {
         // Tworzenie i dodawanie napisu do elementu
@@ -294,6 +305,41 @@ $(document).ready(function(){
         });
     });
 });
+document.addEventListener("DOMContentLoaded", function() {
+  const projectItems = document.querySelectorAll('.my-projects1 .project-item1');
+  const captions = ["MEUBLES", "DÉCOUPAGE "];
+
+  projectItems.forEach((item, index) => {
+      // Tworzenie i dodawanie napisu do elementu
+      const caption = document.createElement('div');
+      caption.textContent = captions[index];
+      caption.style.position = 'absolute';
+      caption.style.top = '50%';
+      caption.style.left = '50%';
+      caption.style.transform = 'translate(-50%, -50%)';
+      caption.style.color = 'white';
+      caption.style.fontSize = '40px';
+      caption.style.fontWeight = 'bold';
+      caption.style.textAlign = 'center';
+      item.style.position = 'relative';
+      item.style.display = 'flex';
+      item.style.justifyContent = 'center';
+      item.style.alignItems = 'center';
+      item.appendChild(caption);
+
+      // Dodawanie zachowania powiększania i oddalania
+      item.addEventListener('mouseenter', () => {
+          item.style.transform = 'scale(1.05)';
+          item.style.transition = 'transform .3s ease-in-out';
+      });
+
+      item.addEventListener('mouseleave', () => {
+          item.style.transform = 'scale(1)';
+          item.style.transition = 'transform .3s ease-in-out';
+      });
+  });
+});
+
 
 document.querySelectorAll('.my-project-item').forEach((item, index) => {
   item.addEventListener('click', () => {
@@ -313,3 +359,61 @@ document.querySelectorAll('.my-project-item').forEach((item, index) => {
     }
   });
 });
+document.querySelectorAll('.my-project-item1').forEach((item, index) => {
+  item.addEventListener('click', () => {
+    switch (index) {
+      case 0:
+        window.location.href = 'services.html'; // Adres URL dla projektu 1
+        break;
+      case 1:
+        window.location.href = 'decoupage.html'; // Adres URL dla projektu 2
+        break;
+      
+    }
+  });
+});
+
+
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+}
+
+
+
+$(document).ready(function () {
+  $('.navbar .nav-item.dropdown').hover(function () {
+      $(this).find('.dropdown-menu').first().stop(true, true).slideDown(150);
+  }, function () {
+      $(this).find('.dropdown-menu').first().stop(true, true).slideUp(100);
+  });
+});
+
+
+
+
