@@ -574,6 +574,12 @@ strong {
 /*---------------------------------------
   meble          
 -----------------------------------------*/
+.custom-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .detail-section {
   display: flex;
@@ -621,10 +627,41 @@ strong {
 .detail-table th {
   background-color: #f2f2f2;
 }
+/*---------------------------------------
+  galerry           
+-----------------------------------------*/
+.project-itemg {
+  margin-bottom: 30px; /* Odstęp między okienkami */
+}
+
+.project-imageg {
+  border-radius: 15px; /* Zaokrąglone krawędzie */
+  transition: transform .3s ease-in-out; /* Płynne przejście */
+}
+.project-itemg:hover {
+  transform: scale(1.05); /* Powiększa obraz */
+}
+
+.galleria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 30px;
+}
+
+.galleria img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.galleria img:hover {
+  transform: scale(1.05);
+  transition: transform .3s ease-in-out;
+}
 
 /*---------------------------------------
   Service             
 -----------------------------------------*/
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -720,6 +757,7 @@ strong {
 -----------------------------------------*/
 
 
+
 .pad {
   height: 100px; /* Określa wysokość odstępu */
 }
@@ -727,6 +765,7 @@ strong {
 .carousel-item, .carousel-img-frame {
   transition: transform .3s ease-in-out;
 }
+
 
 .custom-caption {
   display: none;
@@ -736,6 +775,7 @@ strong {
   transform: scale(1.05); /* Powiększa cały kontener */
   transition: transform .3s ease-in-out; /* Dodaje płynne przejście */
 }
+
 .carousel-img-frame:hover {
   transform: scale(1.05); /* Powiększa obraz */
    transition: transform .3s ease-in-out;  /* Dodaje płynne przejście */
@@ -760,10 +800,12 @@ strong {
   display: block;
 }
 
+
 .carousel-item.active {
   opacity: 1;
   position: relative;
 }
+
 
 .carousel-img-frame {
   display: block;
@@ -796,9 +838,10 @@ strong {
 }
 .artists-section {
   background-image: url('pexels-photo-326333.jpeg');
-  background-size: cover; /* Aby obraz pokrywał całą dostępną przestrzeń */
-  background-position: center; /* Centrowanie obrazu */
-  padding-top: 150px; /* Zwiększa odległość od navbara */  
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat; /* Dodanie powtarzającego się tła */
+  padding-top: 150px;
 }
 
 .artists-thumb {
